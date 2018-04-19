@@ -97,8 +97,7 @@ function get-branch-status {
         echo ${color} # 色だけ返す
 }
 
-PROMPT="%{${fg[cyan]}%}[%T]%{${reset_color}%} %~
-%# "
+PROMPT=$'%{${fg[cyan]}%}[%T] %~%{${reset_color}%} \n%# '
 
 zmodload zsh/datetime
 reset_tmout() { TMOUT=$[60-EPOCHESECONDS%60] }
