@@ -1,4 +1,4 @@
- "新しい行のインデントを現在行と同じにする
+"新しい行のインデントを現在行と同じにする
 set autoindent
 "バックアップファイルのディレクトリを指定する
 set backupdir=$HOME/vimbackup
@@ -34,6 +34,8 @@ set shiftwidth=2
 set expandtab
 "
 set softtabstop=0
+
+inoremap <silent> jj <ESC>
  
 "----------
 " カラースキーム
