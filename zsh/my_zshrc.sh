@@ -16,6 +16,8 @@ zplug "voronkovich/mysql.plugin.zsh"
 zplug "marzocchi/zsh-notify"
 zplug "oknowton/zsh-dwim"
 
+export LC_CTYPE=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
@@ -105,7 +107,19 @@ precmd_functions=($precmd_fuctions reset_tmout)
 redraw_tmout()  { zle reset-prompt; reset_tmout }
 TRAPALRM() { redraw_tmout }
 
-function chpwd() {echo -ne "\033]0;${PWD##*/}\007"}
+# function chpwd() {echo -ne "\033]0;${PWD##*/}\007"}
+
+# hyper-tab-icon
+precmd() {
+  pwd=$(pwd)
+  cwd=${pwd##*/}
+  print -Pn "\e]0;$cwd\a"
+}
+
+preexec() {
+#   if overridden; then return; fi
+   printf "\033]0;%s\a" "${1%% *} | $cwd"
+}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
