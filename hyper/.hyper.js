@@ -124,10 +124,22 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
 
-    visor: {
-        hotkey: 'Command+i',
-        position: 'top', // or left, right, bottom
-        height: 900,
+    // hyperterm-overlay
+    overlay: {
+      alwaysOnTop: true,
+      animate: false,
+      hasShadow: false,
+      hideDock: false,
+      hideOnBlur: false,
+      hotkeys: ['Command+i'],
+      position: 'top',
+      primaryDisplay: false,
+      resizable: true,
+      startAlone: false,
+      startup: false,
+      size: 1.0,
+      tray: false,
+      unique: true
     },
   },
 
@@ -142,7 +154,9 @@ module.exports = {
     'hyper-statusline',
     'hyper-tab-icons',
     'hypercwd',
-    'hyperterm-visor',
+    'hyper-search',
+    "hyper-tabs-enhanced",
+    "hyperterm-overlay"
   ],
 
   // in development, you can create a directory under
