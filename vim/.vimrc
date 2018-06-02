@@ -1,3 +1,20 @@
+set nocompatible
+filetype off
+
+" set RunTime Path
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" 導入したいプラグインを以下に列挙
+" Plugin '[Github Author]/[Github repo]' の形式で記入
+Plugin 'vim-scripts/vim-auto-save'
+
+call vundle#end()
+filetype plugin indent on
+
+
 "新しい行のインデントを現在行と同じにする
 set autoindent
 "バックアップファイルのディレクトリを指定する
@@ -37,6 +54,9 @@ set softtabstop=0
 
 " jjを<ESC>にマッピング
 inoremap <silent> jj <ESC>
+
+" autosave
+let g:auto_save = 1
  
 "----------
 " カラースキーム
