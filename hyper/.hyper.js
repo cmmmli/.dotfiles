@@ -101,7 +101,7 @@ module.exports = {
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
-    // shellArgs: ['--login'],
+    // shellArgs: [''],
 
     // for environment variables
     env: {},
@@ -155,7 +155,6 @@ module.exports = {
     'hyper-tab-icons',
     'hypercwd',
     'hyper-search',
-    "hyper-tabs-enhanced",
     "hyperterm-overlay"
   ],
 

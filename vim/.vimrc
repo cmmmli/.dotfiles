@@ -35,6 +35,7 @@ set expandtab
 "
 set softtabstop=0
 
+" jjを<ESC>にマッピング
 inoremap <silent> jj <ESC>
  
 "----------
