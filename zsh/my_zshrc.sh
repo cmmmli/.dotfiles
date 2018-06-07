@@ -41,6 +41,7 @@ export PATH="/usr/local/opt/libxslt/bin:$PATH"
 export PATH="/usr/local/opt/libiconv/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 alias be='bundle exec'
 alias kces='kubectl -n elasticsearch-staging'
