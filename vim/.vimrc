@@ -9,7 +9,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " 導入したいプラグインを以下に列挙
 " Plugin '[Github Author]/[Github repo]' の形式で記入
-Plugin 'vim-scripts/vim-auto-save'
+" Plugin 'vim-scripts/vim-auto-save'
 
 call vundle#end()
 filetype plugin indent on
@@ -56,7 +56,7 @@ set softtabstop=0
 inoremap <silent> jj <ESC>
 
 " autosave
-let g:auto_save = 1
+" let g:auto_save = 1
  
 "----------
 " カラースキーム
