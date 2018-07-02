@@ -34,12 +34,11 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 export PATH=/usr/local/bin:$PATH
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export PATH="$HOME/.goenv/bin:$PATH"
-eval "$(goenv init -)"
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
 export PATH="/usr/local/opt/libxslt/bin:$PATH"
 export PATH="/usr/local/opt/libiconv/bin:$PATH"
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/dev"
+export PATH=$PATH:$GOPATH/bin
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
@@ -122,6 +121,19 @@ preexec() {
 #   if overridden; then return; fi
    printf "\033]0;%s\a" "${1%% *} | $cwd"
 }
+
+# config peco
+bindkey '^]' peco-src
+
+function peco-src() {
+  local src=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$src" ]; then
+    BUFFER="cd $src"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N peco-src
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
