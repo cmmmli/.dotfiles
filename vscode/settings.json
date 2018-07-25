@@ -1,1 +1,29 @@
-/Users/cmr/Library/Application Support/Code/User/settings.json
+{
+    "workbench.colorTheme": "Ariake Dark",
+    "editor.fontFamily": "Ricty Diminished",
+    "editor.tabSize": 2,
+    "editor.fontSize": 14,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j","j"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "workbench.startupEditor": "newUntitledFile",
+    "vs-kubernetes": {
+        "vs-kubernetes.namespace": "",
+        "vs-kubernetes.helm-path": "/usr/local/bin/helm"
+    },
+    "editor.cursorStyle": "block",
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "git.path": "/usr/local/bin/git",
+    "workbench.sideBar.location": "left",
+    "[go]": {
+        "editor.tabSize": 4
+  },
+}
