@@ -38,6 +38,7 @@ export PATH="/usr/local/opt/libxml2/bin:$PATH"
 export PATH="/usr/local/opt/libxslt/bin:$PATH"
 export PATH="/usr/local/opt/libiconv/bin:$PATH"
 export GOPATH="$HOME/dev"
+export GOROOT="$(go env GOROOT)"
 export PATH=$PATH:$GOPATH/bin
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
