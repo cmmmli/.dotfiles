@@ -20,7 +20,6 @@ export LC_CTYPE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 
-eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -42,6 +41,8 @@ export GOROOT="$(go env GOROOT)"
 export PATH=$PATH:$GOPATH/bin
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
 
 alias be='bundle exec'
 alias kces='kubectl -n elasticsearch-staging'
