@@ -43,6 +43,8 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PGDATA='/usr/local/var/postgres'
 
 alias be='bundle exec'
 alias kces='kubectl -n elasticsearch-staging'
