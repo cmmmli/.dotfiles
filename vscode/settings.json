@@ -25,5 +25,18 @@
     "workbench.sideBar.location": "left",
     "[go]": {
         "editor.tabSize": 4
-  },
+    },
+    "[ruby]": {
+        "editor.tabSize": 2
+    },
+    "emmet.includeLanguages": {
+        "erb": "html",
+    },
+    "emmet.showAbbreviationSuggestions": true,
+    "emmet.showExpandedAbbreviation": "always",
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.triggerExpansionOnTab": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "ruby.format": "rubocop",
+    "workbench.settings.editor": "json",
 }
