@@ -56,6 +56,7 @@ alias diff='git diff'
 alias lla='ls -la'
 alias l1='ls -1'
 alias la1='ls -1a'
+alias ccat='ccat -G Plaintext="darkwhite"'
 
 ## RPROMPT
 RPROMPT=$'`branch-status-check`' # %~はpwd
