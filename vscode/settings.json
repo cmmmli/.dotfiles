@@ -39,4 +39,6 @@
     "editor.acceptSuggestionOnEnter": "off",
     "ruby.format": "rubocop",
     "workbench.settings.editor": "json",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
 }
