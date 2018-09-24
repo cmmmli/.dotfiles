@@ -1,0 +1,21 @@
+[core]
+	excludesfile = /Users/cmr/.gitignore_global
+[difftool]
+  prompt = false
+[difftool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
+[merge]
+  tool = meld
+[mergetool]
+  prompt = false
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+[user]
+	name = komoriyuichiro
+	email = thekomori1113@gmail.com
+[commit]
+	template = /Users/cmr/.stCommitMsg
+[ghq]
+	root = /Users/cmr/dev/src
