@@ -41,4 +41,5 @@
     "workbench.settings.editor": "json",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
+    "breadcrumbs.enabled": true,
 }

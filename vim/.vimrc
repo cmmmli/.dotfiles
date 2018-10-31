@@ -51,6 +51,7 @@ set shiftwidth=2
 set expandtab
 "
 set softtabstop=0
+set backspace=2
 
 " jjを<ESC>にマッピング
 inoremap <silent> jj <ESC>
