@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ln -s ./zsh/my_zshrc.sh ~/.zshrc
 ln -s ./vim/.vimrc ~/.vimrc
@@ -9,5 +9,5 @@ ln -s ~/.dotfiles/git/.gitignore_global ~/.gitignore_global
 mkdir -p ~/iterm2
 ln -s ./iterm2/com.googlecode.iterm2.plist ~/iterm2/com.googlecode.iterm2.plist
 
-mkdir -p ~/.git_templete/hooks
-cp ./git/hooks/pre-push ~/.git_templete/hooks/pre-push
+mkdir -p ~/.git_template/hooks
+cp ./git/hooks/pre-push ~/.git_template/hooks/pre-push
