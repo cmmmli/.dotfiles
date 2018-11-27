@@ -19,3 +19,5 @@
 	template = /Users/cmr/.stCommitMsg
 [ghq]
 	root = /Users/cmr/dev/src
+[init]
+	templatedir = ~/.git_template
