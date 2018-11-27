@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/cmr/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [difftool]
   prompt = false
 [difftool "meld"]
@@ -16,8 +16,8 @@
 	name = komoriyuichiro
 	email = thekomori1113@gmail.com
 [commit]
-	template = /Users/cmr/.stCommitMsg
+	template = ~/.stCommitMsg
 [ghq]
-	root = /Users/cmr/dev/src
+	root = ~/dev/src
 [init]
-	templatedir = ~/.git_template
+	templatedir = ~/.git_template/

@@ -1,12 +1,19 @@
 #!/bin/bash
 
-echo '[Warn] push to remote, continue? [y/N]'
+while read local_ref local_sha1 remote_ref remote_sha1
+do
+  for branch in "master" "develop"; do
+    if [[ "${remote_ref##refs/heads/}" = "${branch}" ]]; then
+      echo "Warning: push to remote ${branch}, continue? [y/N]"
 
-exec < /dev/tty
-read answer
+      exec < /dev/tty
+      read ANSWER
 
-case $answer in
-    'y' | 'yes') echo '[info] OK. push start.';;
-    * ) echo '[error] push failed.';exit 1;;
-esac
-exit 0
+      case $ANSWER in
+        "Y" | "y" | "yes" | "Yes" | "YES" ) echo "OK. push start.";;
+        * ) echo "push failed.";exit 1;;
+      esac
+      exit 0
+    fi
+  done
+done
