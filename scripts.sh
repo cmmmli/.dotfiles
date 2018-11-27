@@ -10,4 +10,4 @@ mkdir -p ~/iterm2
 ln -s ./iterm2/com.googlecode.iterm2.plist ~/iterm2/com.googlecode.iterm2.plist
 
 mkdir -p ~/.git_templete/hooks
-ln -s ./git/hooks/pre-push ~/.git_templete/hooks/pre-push
+cp ./git/hooks/pre-push ~/.git_templete/hooks/pre-push
