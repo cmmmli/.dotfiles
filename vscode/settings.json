@@ -38,6 +38,7 @@
     "emmet.triggerExpansionOnTab": true,
     "editor.acceptSuggestionOnEnter": "off",
     "ruby.format": "rubocop",
+    "ruby.lint": { "rubocop": true },
     "workbench.settings.editor": "json",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -45,5 +46,9 @@
     "C_Cpp.default.cppStandard": "c++14",
     "C_Cpp.default.cStandard": "c11",
     "clang.executable": "clang++",
-    "clang.cxxflags": ["-std=c++14"]
+    "clang.cxxflags": [
+        "-std=c++14"
+    ],
+    "javascript.validate.enable": false,
+    "window.zoomLevel": 0,
 }

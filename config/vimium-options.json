@@ -1,0 +1,46 @@
+{
+  "settingsVersion": "1.64.3",
+  "exclusionRules": [
+    {
+      "pattern": "https?://twitter.com/*",
+      "passKeys": "gihp?n/"
+    },
+    {
+      "pattern": "https?://www.e-typing.ne.jp/*",
+      "passKeys": "qwertyuiopasdfghjklzxcvbnm"
+    },
+    {
+      "pattern": "https?://github.com/*",
+      "passKeys": "/"
+    },
+    {
+      "pattern": "https?://mobile.twitter.com/*",
+      "passKeys": "?giphn."
+    },
+    {
+      "pattern": "http://typingx0.net/sushida/*",
+      "passKeys": "qwertyuiopasdfghjklzxcvbnm?"
+    },
+    {
+      "pattern": "http://sl.infovision.co.jp/*",
+      "passKeys": "qwertyuiopasdfghjklzxcvbnm?"
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here.\nmap h goBack\nmap l goForward\nmap H previousTab\nmap L nextTab\nmap i LinkHints.activateMode\nmap I LinkHints.activateModeToOpenInNewTab",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "g: http://www.google.com/search?q=%s Google\ny: http://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\na: http://www.amazon.co.jp/s/?field-keywords=%s Amazon\nt: https://translate.google.com/#en/ja/%s Google translate(en/ja)\nq: https://qiita.com/search?q=%s Qiita\nqs: https://qiita.com/search?stocked=1&q=%s Qiita stock\ngp: http://www.google.co.jp/search?hl=ja&source=hp&q=%s&tbm=isch Google image\ngh: https://github.com/search?utf8=✓&q=%s Github\nd: https://duckduckgo.com/?q=%s DuckDuckGo\nw: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ntw: https://twitter.com/search?lang=ja&q=%s Twitter",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
