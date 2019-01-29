@@ -15,5 +15,6 @@ $ git clone git@github.com:cmmmli/.dotfiles.git
 ```
 
 ```
+$ sudo apt install git curl gawk vim
 $ ./scripts.sh
 ```
