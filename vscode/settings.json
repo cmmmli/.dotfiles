@@ -27,7 +27,8 @@
         "editor.tabSize": 4
     },
     "[ruby]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
     },
     "emmet.includeLanguages": {
         "erb": "html",
