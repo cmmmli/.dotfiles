@@ -1,15 +1,15 @@
-set nocompatible
 filetype off
 
 " set RunTime Path
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-
 " 導入したいプラグインを以下に列挙
 " Plugin '[Github Author]/[Github repo]' の形式で記入
 " Plugin 'vim-scripts/vim-auto-save'
+"
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on
@@ -52,6 +52,9 @@ set expandtab
 "
 set softtabstop=0
 set backspace=2
+
+" 0が前置された数字も10進数として扱う(デフォルトでは8進数)
+set nrformats=
 
 " jjを<ESC>にマッピング
 inoremap <silent> jj <ESC>
