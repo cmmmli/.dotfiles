@@ -10,6 +10,7 @@ call vundle#begin()
 "
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'vim-jp/vimdoc-ja'
 
 call vundle#end()
 filetype plugin indent on
@@ -55,6 +56,9 @@ set backspace=2
 
 " 0が前置された数字も10進数として扱う(デフォルトでは8進数)
 set nrformats=
+"補完設定
+set wildmenu
+set wildmode=full
 
 " jjを<ESC>にマッピング
 inoremap <silent> jj <ESC>
