@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'vim-jp/vimdoc-ja'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,8 +42,8 @@ set smarttab
 " grep検索を設定する
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
-" 検索結果のハイライトをEsc連打でクリアする
-nnoremap <ESC><ESC> :nohlsearch<CR>
+" 検索結果をハイライトする
+set hlsearch
  
 " タブを表示するときの幅
 set tabstop=2
@@ -60,8 +61,13 @@ set nrformats=
 set wildmenu
 set wildmode=full
 
+" 検索結果のハイライトをEsc連打でクリアする
+nnoremap <ESC><ESC> :nohlsearch<CR>
 " jjを<ESC>にマッピング
 inoremap <silent> jj <ESC>
+" <C-p>と<C-n>を矢印キーにマッピング
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " autosave
 " let g:auto_save = 1
@@ -69,5 +75,5 @@ inoremap <silent> jj <ESC>
 "----------
 " カラースキーム
 "----------
-colorscheme monokai
+colorscheme molokai
 syntax enable
