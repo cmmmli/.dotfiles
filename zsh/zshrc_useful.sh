@@ -125,12 +125,40 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
+alias be='bundle exec'
+alias bi='bundle install'
+alias kces='kubectl -n elasticsearch-staging'
+alias kcep='kubectl -n elasticsearch-production'
+alias kce='kubectl -n elasticsearch'
+alias spotlightreindex='sudo mdutil -E /'
+alias lla='ls -la'
+alias l1='ls -1'
+alias la1='ls -1a'
+alias ccat='ccat -G Plaintext="darkwhite"'
+alias tree1='tree -L 1'
+alias tree2='tree -L 2'
+alias tree3='tree -L 3'
+
+alias g='git'
+alias ga='git add'
+alias gd='git diff'
+alias gs='git status'
+alias gps='git push'
+alias gpl='git pull'
+alias gb='git branch'
+alias gch='git checkout'
+alias gf='git fetch'
+alias gc='git commit'
+
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
 # グローバルエイリアス
-alias -g L='| less'
+alias -g L='| less -R'
 alias -g G='| grep'
+alias -g C='| pbcopy'
+alias -g X='| xargs'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1

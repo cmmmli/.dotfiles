@@ -48,30 +48,6 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export PGDATA='/usr/local/var/postgres'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-alias be='bundle exec'
-alias kces='kubectl -n elasticsearch-staging'
-alias kcep='kubectl -n elasticsearch-production'
-alias kce='kubectl -n elasticsearch'
-alias spotlightreindex='sudo mdutil -E /'
-alias lla='ls -la'
-alias l1='ls -1'
-alias la1='ls -1a'
-alias ccat='ccat -G Plaintext="darkwhite"'
-alias tree1='tree -L 1'
-alias tree2='tree -L 2'
-alias tree3='tree -L 3'
-
-alias g='git'
-alias ga='git add'
-alias gd='git diff'
-alias gs='git status'
-alias gp='git push'
-alias gb='git branch'
-alias gst='git status'
-alias gco='git checkout'
-alias gf='git fetch'
-alias gc='git commit'
-
 ## RPROMPT
 RPROMPT=$'`branch-status-check`' # %~はpwd
 setopt prompt_subst
