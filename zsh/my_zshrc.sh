@@ -19,6 +19,7 @@ zplug "oknowton/zsh-dwim"
 export LC_CTYPE=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
+export EDITOR=vim
 
 eval "$(pyenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -45,22 +46,39 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export PGDATA='/usr/local/var/postgres'
+export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 alias be='bundle exec'
 alias kces='kubectl -n elasticsearch-staging'
 alias kcep='kubectl -n elasticsearch-production'
 alias kce='kubectl -n elasticsearch'
 alias spotlightreindex='sudo mdutil -E /'
-alias status='git status'
-alias diff='git diff'
 alias lla='ls -la'
 alias l1='ls -1'
 alias la1='ls -1a'
 alias ccat='ccat -G Plaintext="darkwhite"'
 
+alias g='git'
+alias ga='git add'
+alias gd='git diff'
+alias gs='git status'
+alias gp='git push'
+alias gb='git branch'
+alias gst='git status'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gc='git commit'
+
 ## RPROMPT
 RPROMPT=$'`branch-status-check`' # %~はpwd
 setopt prompt_subst
+
+## zshの設定
+setopt auto_param_keys
+# 補完候補に色つける
+autoload -U colors ; colors ; zstyle ':completion:*' list-colors "${LS_COLORS}"
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 
 # {{{ methods for RPROMPT
 # fg[color]表記と$reset_colorを使いたい
