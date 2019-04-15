@@ -149,6 +149,7 @@ alias gb='git branch'
 alias gch='git checkout'
 alias gf='git fetch'
 alias gc='git commit'
+alias gm='git merge'
 
 
 # sudo の後のコマンドでエイリアスを有効にする
