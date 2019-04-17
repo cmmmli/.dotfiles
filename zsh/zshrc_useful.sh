@@ -151,6 +151,8 @@ alias gf='git fetch'
 alias gc='git commit'
 alias gm='git merge'
 
+alias rmfeature='gb --list G feature X git branch -d'
+
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
