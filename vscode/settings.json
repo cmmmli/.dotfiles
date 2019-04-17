@@ -33,9 +33,7 @@
     "emmet.includeLanguages": {
         "erb": "html",
     },
-    "emmet.showAbbreviationSuggestions": true,
     "emmet.showExpandedAbbreviation": "always",
-    "emmet.showSuggestionsAsSnippets": true,
     "emmet.triggerExpansionOnTab": true,
     "editor.acceptSuggestionOnEnter": "off",
     "ruby.format": "rubocop",
@@ -52,4 +50,5 @@
     ],
     "javascript.validate.enable": false,
     "window.zoomLevel": 0,
+    "editor.snippetSuggestions": "top",
 }
