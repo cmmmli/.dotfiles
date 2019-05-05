@@ -63,8 +63,6 @@ set wildmode=full
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
-" jjを<ESC>にマッピング
-inoremap <silent> jj <ESC>
 " <C-p>と<C-n>を矢印キーにマッピング
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
