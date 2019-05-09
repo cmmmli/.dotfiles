@@ -6,17 +6,7 @@
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j","j"],
-            "after": ["<Esc>"]
-        }
-    ],
     "workbench.startupEditor": "newUntitledFile",
-    "vs-kubernetes": {
-        "vs-kubernetes.namespace": "",
-        "vs-kubernetes.helm-path": "/usr/local/bin/helm"
-    },
     "editor.cursorStyle": "block",
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
@@ -28,7 +18,8 @@
     },
     "[ruby]": {
         "editor.tabSize": 2,
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "misogi.ruby-rubocop"
     },
     "emmet.includeLanguages": {
         "erb": "html",
@@ -42,7 +33,7 @@
     "ruby.useLanguageServer": true,
     "solargraph.definitions": true,
     "solargraph.diagnostics": true,
-    "solargraph.commandPath": "~/.rbenv/shims/solargraph",
+    "solargraph.commandPath": "/Users/cmr/.rbenv/shims/solargraph",
     "workbench.settings.editor": "json",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
