@@ -48,6 +48,10 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export PGDATA='/usr/local/var/postgres'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# libffi settings
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
 ## RPROMPT
 RPROMPT=$'`branch-status-check`' # %~はpwd
 setopt prompt_subst
