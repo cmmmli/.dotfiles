@@ -1,20 +1,15 @@
 # .dotfiles
-~以下に置くものは以下ファイルのシンボリックリンクを置いています
-
-## zplug install
-
-```
-$ export ZPLUG_HOME=~/.zplug
-$ git clone https://github.com/zplug/zplug $ZPLUG_HOME
-```
+~以下に置くものは基本的にシンボリックリンク
+スクリプトファイルはMac用
+TODO: Linux環境でも動くようにする
 
 ## scripts
 
-```
-$ git clone git@github.com:cmmmli/.dotfiles.git
-```
-
-```
+```bash
+# linux
 $ sudo apt install git curl gawk vim
-$ ./scripts.sh
+# $ ./scripts.sh
+
+# mac
+$ ./script.sh
 ```
