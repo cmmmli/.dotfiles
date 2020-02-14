@@ -48,10 +48,15 @@ eval "$(rbenv init -)"
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export PGDATA='/usr/local/var/postgres'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
-# libffi settings
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+# # libffi settings
+# export LDFLAGS="-L/usr/local/opt/libffi/lib"
+# export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
+# nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 ## RPROMPT
 RPROMPT=$'`branch-status-check`' # %~はpwd
@@ -149,3 +154,7 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 source <(stern --completion=zsh)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

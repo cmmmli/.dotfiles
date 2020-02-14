@@ -19,7 +19,8 @@
     "[ruby]": {
         "editor.tabSize": 2,
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "misogi.ruby-rubocop"
+        "editor.defaultFormatter": "misogi.ruby-rubocop",
+        "editor.formatOnSaveTimeout": 5000
     },
     "emmet.includeLanguages": {
         "erb": "html",
@@ -28,12 +29,15 @@
     "emmet.triggerExpansionOnTab": true,
     "editor.acceptSuggestionOnEnter": "off",
     "ruby.format": "rubocop",
-    "ruby.lint": { "rubocop": true },
+    "ruby.lint": {
+       "rubocop": { "useBundler": true }
+    },
     "ruby.intellisense": "rubyLocate",
     "ruby.useLanguageServer": true,
+    "ruby.useBundler": true,
     "solargraph.definitions": true,
     "solargraph.diagnostics": true,
-    "solargraph.commandPath": "/Users/cmr/.rbenv/shims/solargraph",
+    "solargraph.commandPath": "/Users/komori/.rbenv/shims/solargraph",
     "workbench.settings.editor": "json",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -48,4 +52,5 @@
     "window.zoomLevel": 0,
     "editor.snippetSuggestions": "top",
     "C_Cpp.updateChannel": "Insiders",
+    "keyboard.dispatch": "keyCode",
 }
