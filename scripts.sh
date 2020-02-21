@@ -16,7 +16,7 @@ mkdir -p $HOME/vimbackup
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/tomasr/molokai $HOME/.vim/colors/molokai
 cp $HOME/.vim/colors/molokai/colors/molokai.vim $HOME/.vim/colors/molokai.vim
-vim +PluginInstall +qall
+yes | vim +PluginInstall +qall
 
 ln -sf $HOME/.dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s $HOME/.dotfiles/git/.gitconfig $HOME/.gitconfig
@@ -25,7 +25,7 @@ mkdir -p $HOME/.git_template/hooks
 cp ./git/hooks/pre-push $HOME/.git_template/hooks/pre-push
 
 mkdir -p ~/iterm2
-ln -s $HOME/.dotfiles/iterm2/com.googlecode.iterm2.plist ~/iterm2/com.googlecode.iterm2.plist
+# ln -s $HOME/.dotfiles/iterm2/com.googlecode.iterm2.plist ~/iterm2/com.googlecode.iterm2.plist
 
 # rbenv/ruby install
 brew install rbenv
