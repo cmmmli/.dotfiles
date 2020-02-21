@@ -12,9 +12,21 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'vim-jp/vimdoc-ja'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'autozimu/languageclient-neovim'
 
 call vundle#end()
 filetype plugin indent on
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 
 "新しい行のインデントを現在行と同じにする

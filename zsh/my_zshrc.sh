@@ -21,17 +21,9 @@ export LC_ALL=ja_JP.UTF-8
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
-eval "$(pyenv init -)"
-export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
-if which jenv > /dev/null; then
-   export JENV_ROOT=/usr/local/var/jenv
-  eval "$(jenv init -)"
-fi
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 export PATH=/usr/local/bin:$PATH
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
@@ -49,10 +41,18 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export PGDATA='/usr/local/var/postgres'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 
-# # libffi settings
-# export LDFLAGS="-L/usr/local/opt/libffi/lib"
-# export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+export PAGER=less
+
+# add color to `man` command
+export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
+export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
+export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
+export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
+export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
+export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -158,3 +158,5 @@ source <(stern --completion=zsh)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/opt/krb5/bin:$PATH"
+export PATH="/usr/local/opt/krb5/sbin:$PATH"

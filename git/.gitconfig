@@ -13,7 +13,7 @@
   trustExitCode = true
   cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 [user]
-	name = komoriyuichiro
+	name = Yuichiro Komori
 	email = thekomori1113@gmail.com
 [commit]
 	template = ~/.stCommitMsg

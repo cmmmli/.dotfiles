@@ -20,7 +20,6 @@
         "editor.tabSize": 2,
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "misogi.ruby-rubocop",
-        "editor.formatOnSaveTimeout": 5000
     },
     "emmet.includeLanguages": {
         "erb": "html",
@@ -30,7 +29,7 @@
     "editor.acceptSuggestionOnEnter": "off",
     "ruby.format": "rubocop",
     "ruby.lint": {
-       "rubocop": { "useBundler": true }
+       "rubocop": true
     },
     "ruby.intellisense": "rubyLocate",
     "ruby.useLanguageServer": true,
@@ -53,4 +52,5 @@
     "editor.snippetSuggestions": "top",
     "C_Cpp.updateChannel": "Insiders",
     "keyboard.dispatch": "keyCode",
+    "editor.renderWhitespace": "none",
 }
