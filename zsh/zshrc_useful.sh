@@ -127,6 +127,7 @@ alias mkdir='mkdir -p'
 
 alias be='bundle exec'
 alias bi='bundle install'
+alias docc='docker-compose'
 alias kces='kubectl -n elasticsearch-staging'
 alias kcep='kubectl -n elasticsearch-production'
 alias kce='kubectl -n elasticsearch'
@@ -150,6 +151,9 @@ alias gch='git checkout'
 alias gf='git fetch'
 alias gc='git commit'
 alias gm='git merge'
+alias gsw='git switch'
+
+alias ghqgps='ghq get -p --shallow'
 
 alias rmfeature='gb --list G feature X git branch -d'
 

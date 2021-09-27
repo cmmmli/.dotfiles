@@ -3,3 +3,5 @@
 .vscode/
 .vimrc.local
 .pryrc
+.solargraph.yml
+.envrc

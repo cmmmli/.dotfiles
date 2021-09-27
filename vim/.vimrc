@@ -56,7 +56,7 @@ set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
 " 検索結果をハイライトする
 set hlsearch
- 
+
 " タブを表示するときの幅
 set tabstop=2
 " タブを挿入するときの幅
@@ -73,6 +73,8 @@ set nrformats=
 set wildmenu
 set wildmode=full
 
+set iskeyword-=_
+
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
 " <C-p>と<C-n>を矢印キーにマッピング
@@ -81,7 +83,7 @@ cnoremap <C-n> <Down>
 
 " autosave
 " let g:auto_save = 1
- 
+
 "----------
 " カラースキーム
 "----------
