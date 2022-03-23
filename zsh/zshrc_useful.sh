@@ -125,12 +125,7 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
-alias be='bundle exec'
-alias bi='bundle install'
 alias docc='docker-compose'
-alias kces='kubectl -n elasticsearch-staging'
-alias kcep='kubectl -n elasticsearch-production'
-alias kce='kubectl -n elasticsearch'
 alias spotlightreindex='sudo mdutil -E /'
 alias lla='ls -la'
 alias l1='ls -1'
