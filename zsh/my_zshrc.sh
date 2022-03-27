@@ -88,7 +88,16 @@ setopt auto_param_keys
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 function powerline_precmd() {
-    PS1="$($GOPATH/bin/powerline-go -error $? -jobs ${${(%):%j}:-0})"
+    eval "$($GOPATH/bin/powerline-go \
+          -error $? \
+          -jobs ${${(%):%j}:-0} \
+          -shell zsh \
+          -eval \
+          -modules user,host,ssh,cwd,git,hg,jobs,exit,root \
+          -modules-right kube \
+          -cwd-mode dironly \
+          -git-mode compact \
+          -hostname-only-if-ssh)"
 
     # Uncomment the following line to automatically clear errors after showing
     # them once. This not only clears the error for powerline-go, but also for
@@ -144,7 +153,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 source <(stern --completion=zsh)
 source <(gh completion -s zsh)
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
-
 
 # volta completions zsh > /opt/homebrew/share/zsh-completions/_volta
 # argo completion zsh > /opt/homebrew/share/zsh-completions/_argo
