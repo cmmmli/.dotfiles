@@ -1,0 +1,19 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     'obj_arm64/libspaces.dylib'
+relocations:
+  - { offsetInCU: 0x27, offset: 0x27, size: 0x8, addend: 0x0, symName: _luaopen_hs_libspaces, symObjAddr: 0x0, symBinAddr: 0x2850, symSize: 0x19C }
+  - { offsetInCU: 0x58, offset: 0x58, size: 0x8, addend: 0x0, symName: _regEx_UUID, symObjAddr: 0x5000, symBinAddr: 0x8240, symSize: 0x0 }
+  - { offsetInCU: 0x190, offset: 0x190, size: 0x8, addend: 0x0, symName: _g_connection, symObjAddr: 0x4FF8, symBinAddr: 0x8238, symSize: 0x0 }
+  - { offsetInCU: 0x1A5, offset: 0x1A5, size: 0x8, addend: 0x0, symName: _moduleLib, symObjAddr: 0x10E8, symBinAddr: 0x81B0, symSize: 0x0 }
+  - { offsetInCU: 0xDB0, offset: 0xDB0, size: 0x8, addend: 0x0, symName: _refTable, symObjAddr: 0x1168, symBinAddr: 0x8230, symSize: 0x0 }
+  - { offsetInCU: 0xE57, offset: 0xE57, size: 0x8, addend: 0x0, symName: _luaopen_hs_libspaces, symObjAddr: 0x0, symBinAddr: 0x2850, symSize: 0x19C }
+  - { offsetInCU: 0xE9F, offset: 0xE9F, size: 0x8, addend: 0x0, symName: _spaces_screensHaveSeparateSpaces, symObjAddr: 0x19C, symBinAddr: 0x29EC, symSize: 0x8C }
+  - { offsetInCU: 0xED5, offset: 0xED5, size: 0x8, addend: 0x0, symName: _spaces_managedDisplaySpaces, symObjAddr: 0x228, symBinAddr: 0x2A78, symSize: 0xD8 }
+  - { offsetInCU: 0xF19, offset: 0xF19, size: 0x8, addend: 0x0, symName: _spaces_getActiveSpace, symObjAddr: 0x300, symBinAddr: 0x2B50, symSize: 0x84 }
+  - { offsetInCU: 0xF4F, offset: 0xF4F, size: 0x8, addend: 0x0, symName: _spaces_moveWindowToSpace, symObjAddr: 0x384, symBinAddr: 0x2BD4, symSize: 0x438 }
+  - { offsetInCU: 0xFE2, offset: 0xFE2, size: 0x8, addend: 0x0, symName: _spaces_windowsForSpace, symObjAddr: 0x7BC, symBinAddr: 0x300C, symSize: 0x2F0 }
+  - { offsetInCU: 0x109A, offset: 0x109A, size: 0x8, addend: 0x0, symName: _spaces_windowSpaces, symObjAddr: 0xAAC, symBinAddr: 0x32FC, symSize: 0x200 }
+  - { offsetInCU: 0x10FB, offset: 0x10FB, size: 0x8, addend: 0x0, symName: _spaces_coreDesktopSendNotification, symObjAddr: 0xCAC, symBinAddr: 0x34FC, symSize: 0xCC }
+  - { offsetInCU: 0x113F, offset: 0x113F, size: 0x8, addend: 0x0, symName: _workspace_is_macos_sonoma14_5_or_newer, symObjAddr: 0xD78, symBinAddr: 0x35C8, symSize: 0xEC }
+...
