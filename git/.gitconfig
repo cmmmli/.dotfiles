@@ -28,6 +28,8 @@
   lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   pushf = push --force-with-lease
   chp = cherry-pick
+  rpo = remote prune origin
+  staash = stash --all
 [pull]
 	rebase = false
 [split-diffs]
@@ -37,5 +39,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential "https://github.com"]
-	helper = !/opt/homebrew/bin/gh auth git-credential
+[includeIf "gitdir:~/dev/src/github.com/macbee-planet/"]
+  path = ~/dev/src/github.com/cmmmli/.dotfiles/git/configs/work/.gitconfig
+[push]
+  autoSetupRemote = true
+[rerere]
+  enabled = true

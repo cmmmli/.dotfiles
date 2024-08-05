@@ -1,7 +1,8 @@
 *~
 .DS_Store
-.vscode/
 .vimrc.local
 .pryrc
 .solargraph.yml
 .envrc
+*.code-workspace
+*.local.tfvars

@@ -109,15 +109,10 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
-alias docc='docker-compose'
-alias spotlightreindex='sudo mdutil -E /'
+alias docc='docker compose'
 alias lla='ls -la'
 alias l1='ls -1'
 alias la1='ls -1a'
-alias ccat='ccat -G Plaintext="darkwhite"'
-alias tree1='tree -L 1'
-alias tree2='tree -L 2'
-alias tree3='tree -L 3'
 
 alias g='git'
 alias ga='git add'
@@ -132,9 +127,13 @@ alias gc='git commit'
 alias gm='git merge'
 alias gsw='git switch'
 
-alias ghqgps='ghq get -p --shallow'
+alias p='pnpm'
 
-alias rmfeature='gb --list G feature X git branch -d'
+alias tb='turbo'
+
+alias k='kubectl'
+alias kc='kubectx | peco | xargs kubectx'
+alias kn='kubens | peco | xargs kubens'
 
 
 # sudo の後のコマンドでエイリアスを有効にする

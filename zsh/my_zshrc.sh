@@ -32,6 +32,8 @@ path=(
 	$path
 )
 
+export VOLTA_HOME="$HOME/.volta"
+
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
@@ -47,13 +49,24 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PGDATA='/usr/local/var/postgres'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="$(=brew --prefix)/opt/mysql@5.7/bin:$PATH"
 export PATH="$PATH:$HOME/bin"
 export PATH="/usr/local/aws/bin:$PATH"
 export PATH="/usr/local/opt/v8@3.15/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
+export PATH="/Applications/Alacritty.app/Contents/MacOS:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/pnpm@8/bin:$PATH"
+export PATH="/usr/local/opt/krb5/bin:$PATH"
+export PATH="/usr/local/opt/krb5/sbin:$PATH"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 export PAGER=less
 
@@ -87,39 +100,6 @@ setopt auto_param_keys
 # 補完候補に色つける
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
-function powerline_precmd() {
-    eval "$($GOPATH/bin/powerline-go \
-          -error $? \
-          -jobs ${${(%):%j}:-0} \
-          -shell zsh \
-          -eval \
-          -modules user,host,ssh,cwd,git,hg,jobs,exit,root \
-          -modules-right kube \
-          -cwd-mode dironly \
-          -git-mode compact \
-          -hostname-only-if-ssh)"
-
-    # Uncomment the following line to automatically clear errors after showing
-    # them once. This not only clears the error for powerline-go, but also for
-    # everything else you run in that shell. Don't enable this if you're not
-    # sure this is what you want.
-
-    #set "?"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
-    install_powerline_precmd
-fi
-
 zmodload zsh/datetime
 reset_tmout() { TMOUT=$[60-EPOCHESECONDS%60] }
 precmd_functions+=($precmd_fuctions reset_tmout)
@@ -142,26 +122,59 @@ function peco-src() {
   fi
   zle -R -c
 }
+
 zle -N peco-src
 
-export PATH="/usr/local/opt/krb5/bin:$PATH"
-export PATH="/usr/local/opt/krb5/sbin:$PATH"
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
 
 source <(stern --completion=zsh)
 source <(gh completion -s zsh)
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
-
-# volta completions zsh > /opt/homebrew/share/zsh-completions/_volta
-# argo completion zsh > /opt/homebrew/share/zsh-completions/_argo
-
-# hook direnv
-eval "$(direnv hook zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/komori/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/komori/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# Copyright (c) npm, Inc. and Contributors
+# All rights reserved.
+#
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+
+export VOLTA_FEATURE_PNPM=1
+
+# pnpm
+export PNPM_HOME="/Users/komori/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+
+eval "$(starship init zsh)"
+
+# 1password cli completion
+eval "$(op completion zsh)"; compdef _op op
