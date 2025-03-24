@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'vim-jp/vimdoc-ja'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'imsnif/kdl.vim'
 
 call vundle#end()
 filetype plugin indent on
