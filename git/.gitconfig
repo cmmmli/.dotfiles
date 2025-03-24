@@ -1,11 +1,61 @@
+# Below after this line configs are copied from https://blog.gitbutler.com/how-git-core-devs-configure-git/ and modified to my taste
+# clearly makes git better
+
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+  templatedir = ~/.git_template/
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+# why the hell not?
+
+[help]
+  autocorrect = prompt
+[commit]
+  verbose = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
 [core]
-	excludesfile = ~/.gitignore_global
-	; pager = git-split-diffs --color | less -RFX
+  excludesfile = ~/.gitignore_global
+  fsmonitor = true
+  untrackedCache = true
+[merge]
+  # (just 'diff3' if git version < 2.3)
+  conflictstyle = zdiff3
+[pull]
+  rebase = true
+
+# below after this line configs are written by me
+
 [difftool]
   prompt = false
 [difftool "meld"]
   trustExitCode = true
   cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
+
+# TODO: この辺いるか確認する
 [merge]
   tool = meld
 [mergetool]
@@ -13,35 +63,19 @@
 [mergetool "meld"]
   trustExitCode = true
   cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
-[user]
-	name = Komori Yuichiro
-	email = mail.cmmmli@gmail.com
-[commit]
-	template = ~/.stCommitMsg
+
 [ghq]
-	root = ~/dev/src
-[init]
-	templatedir = ~/.git_template/
-	defaultBranch = main
+  root = ~/dev/src
+
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   pushf = push --force-with-lease
-  chp = cherry-pick
   rpo = remote prune origin
   staash = stash --all
-[pull]
-	rebase = false
-[split-diffs]
-	theme-name = github-dark-dim
+
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[includeIf "gitdir:~/dev/src/github.com/macbee-planet/"]
-  path = ~/dev/src/github.com/cmmmli/.dotfiles/git/configs/work/.gitconfig
-[push]
-  autoSetupRemote = true
-[rerere]
-  enabled = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
