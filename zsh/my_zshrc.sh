@@ -33,6 +33,8 @@ path=(
 )
 
 export VOLTA_HOME="$HOME/.volta"
+export AQUA_GLOBAL_CONFIG=$HOME/.config/aqua.yaml
+export AQUA_PROGRESS_BAR=true
 
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
@@ -62,11 +64,13 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
 export PATH="/Applications/Alacritty.app/Contents/MacOS:$PATH"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/opt/pnpm@8/bin:$PATH"
+export PATH="/opt/homebrew/opt/pnpm/bin:$PATH"
 export PATH="/usr/local/opt/krb5/bin:$PATH"
 export PATH="/usr/local/opt/krb5/sbin:$PATH"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$(aqua root-dir)/bin:$PATH"
 
 export PAGER=less
 
@@ -139,7 +143,8 @@ if [ -f '/Users/komori/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/komori/g
 if [ -f '/Users/komori/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/completion.zsh.inc'; fi
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+terraform -install-autocomplete
+
 # Copyright (c) npm, Inc. and Contributors
 # All rights reserved.
 #
@@ -178,3 +183,13 @@ eval "$(starship init zsh)"
 
 # 1password cli completion
 eval "$(op completion zsh)"; compdef _op op
+eval "$(zellij setup --generate-auto-start zsh)"
+
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/komori/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+alias beep='for i in {1..3}; do afplay /System/Library/Sounds/Morse.aiff; done'
+
+complete -o nospace -C /Users/komori/.local/share/aquaproj-aqua/pkgs/http/releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_darwin_arm64.zip/terraform terraform

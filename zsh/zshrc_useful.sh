@@ -127,7 +127,9 @@ alias gc='git commit'
 alias gm='git merge'
 alias gsw='git switch'
 
-alias p='pnpm'
+alias tf='terraform'
+
+alias pn='pnpm'
 
 alias tb='turbo'
 
