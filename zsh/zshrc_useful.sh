@@ -100,9 +100,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 ########################################
 # エイリアス
 
-alias la='ls -a'
-alias ll='ls -l'
-
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -110,9 +107,6 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 
 alias docc='docker compose'
-alias lla='ls -la'
-alias l1='ls -1'
-alias la1='ls -1a'
 
 alias g='git'
 alias ga='git add'
@@ -131,12 +125,7 @@ alias tf='terraform'
 
 alias pn='pnpm'
 
-alias tb='turbo'
-
 alias k='kubectl'
-alias kc='kubectx | peco | xargs kubectx'
-alias kn='kubens | peco | xargs kubens'
-
 
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
@@ -147,33 +136,3 @@ alias -g G='| grep'
 alias -g C='| pbcopy'
 alias -g X='| xargs'
 
-# C で標準出力をクリップボードにコピーする
-# mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
-if which pbcopy >/dev/null 2>&1 ; then
-    # Mac
-    alias -g C='| pbcopy'
-elif which xsel >/dev/null 2>&1 ; then
-    # Linux
-    alias -g C='| xsel --input --clipboard'
-elif which putclip >/dev/null 2>&1 ; then
-    # Cygwin
-    alias -g C='| putclip'
-fi
-
-
-
-########################################
-# OS 別の設定
-case ${OSTYPE} in
-    darwin*)
-        #Mac用の設定
-        export CLICOLOR=1
-        alias ls='ls -G -F'
-        ;;
-    linux*)
-        #Linux用の設定
-        alias ls='ls -F --color=auto'
-        ;;
-esac
-
-# vim:set ft=zsh:

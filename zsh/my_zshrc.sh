@@ -1,19 +1,4 @@
-source ~/.zplug/init.zsh
-
-zplug "wbinglee/zsh-wakatime"
-
-# syntax
-zplug "chrissicool/zsh-256color"
-zplug "Tarrasch/zsh-colors"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "ascii-soup/zsh-url-highlighter"
-
-# program
-zplug "voronkovich/mysql.plugin.zsh"
-
-# tools
-zplug "marzocchi/zsh-notify"
-zplug "oknowton/zsh-dwim"
+eval "$(sheldon source)"
 
 if [ -e $(brew --prefix)/share/zsh-completions ]; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -31,6 +16,7 @@ path=(
 	/usr/local/bin(N-/)
 	$path
 )
+
 
 export VOLTA_HOME="$HOME/.volta"
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aqua.yaml
@@ -74,30 +60,9 @@ export PATH="$(aqua root-dir)/bin:$PATH"
 
 export PAGER=less
 
-if (( $+commands[sw_vers] )) && (( $+commands[arch] )); then
-	[[ -x /usr/local/bin/brew ]] && alias brew="arch -arch x86_64 /usr/local/bin/brew"
-	alias x64='exec arch -x86_64 /bin/zsh'
-	alias a64='exec arch -arm64e /bin/zsh'
-	switch-arch() {
-		if  [[ "$(uname -m)" == arm64 ]]; then
-			arch=x86_64
-		elif [[ "$(uname -m)" == x86_64 ]]; then
-			arch=arm64e
-		fi
-		exec arch -arch $arch /bin/zsh
-	}
-fi
+# eval "$(zellij setup --generate-auto-start zsh)"
 
 setopt magic_equal_subst
-
-# add color to `man` command
-export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
-export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
-export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
-export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
-export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
-export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
-export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
 ## zshの設定
 setopt auto_param_keys
@@ -135,15 +100,9 @@ autoload -Uz compinit && compinit
 source <(stern --completion=zsh)
 source <(gh completion -s zsh)
 [[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/komori/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/komori/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/completion.zsh.inc'; fi
+source <(skaffold completion zsh)
 
 autoload -U +X bashcompinit && bashcompinit
-terraform -install-autocomplete
 
 # Copyright (c) npm, Inc. and Contributors
 # All rights reserved.
@@ -154,9 +113,6 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-
-alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
-
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -183,8 +139,6 @@ eval "$(starship init zsh)"
 
 # 1password cli completion
 eval "$(op completion zsh)"; compdef _op op
-eval "$(zellij setup --generate-auto-start zsh)"
-
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/komori/.rd/bin:$PATH"
@@ -192,4 +146,38 @@ export PATH="/Users/komori/.rd/bin:$PATH"
 
 alias beep='for i in {1..3}; do afplay /System/Library/Sounds/Morse.aiff; done'
 
+terraform -install-autocomplete
+if type terraform &> /dev/null; then
+  complete -C terraform terraform
+fi
+
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/komori/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/komori/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias gwt='cd "$(git worktree list | peco | awk "{print \$1}")"'
+eval "$(mise activate zsh)"
+
 complete -o nospace -C /Users/komori/.local/share/aquaproj-aqua/pkgs/http/releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_darwin_arm64.zip/terraform terraform
+
+tre() { command tre "$@" -e vim && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
+# Added by Antigravity
+export PATH="/Users/komori/.antigravity/antigravity/bin:$PATH"
