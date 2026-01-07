@@ -5,60 +5,87 @@ if [ -e $(brew --prefix)/share/zsh-completions ]; then
 fi
 source ~/dev/src/github.com/cmmmli/.dotfiles/zsh/zshrc_useful.sh
 
-export LC_CTYPE=ja_JP.UTF-8
-export LC_ALL=ja_JP.UTF-8
+########################################
+# 環境変数
 export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
 export EDITOR=vim
+export PAGER=less
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-typeset -U path PATH
-path=(
-	/opt/homebrew/bin(N-/)
-	/usr/local/bin(N-/)
-	$path
-)
+# Go
+export GOPATH="$HOME/dev"
+export GOROOT="$(go env GOROOT)"
 
-
+# Version managers
 export VOLTA_HOME="$HOME/.volta"
+export PYENV_ROOT="$HOME/.pyenv"
+export PGDATA='/usr/local/var/postgres'
+
+# aqua
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aqua.yaml
 export AQUA_PROGRESS_BAR=true
 
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export PATH="/usr/local/opt/libxml2/bin:$PATH"
-export PATH="/usr/local/opt/libxslt/bin:$PATH"
-export PATH="/usr/local/opt/libiconv/bin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export GOPATH="$HOME/dev"
-export GOROOT="$(go env GOROOT)"
-export PATH=$PATH:$GOPATH/bin
-export PATH="/usr/local/opt/curl/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.rbenv/shims:$PATH"
-eval "$(rbenv init -)"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-export PGDATA='/usr/local/var/postgres'
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="$(=brew --prefix)/opt/mysql@5.7/bin:$PATH"
-export PATH="$PATH:$HOME/bin"
-export PATH="/usr/local/aws/bin:$PATH"
-export PATH="/usr/local/opt/v8@3.15/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
-export PATH="/Applications/Alacritty.app/Contents/MacOS:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/opt/pnpm/bin:$PATH"
-export PATH="/usr/local/opt/krb5/bin:$PATH"
-export PATH="/usr/local/opt/krb5/sbin:$PATH"
-export PATH="$VOLTA_HOME/bin:$PATH"
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="$(aqua root-dir)/bin:$PATH"
+########################################
+# PATH 設定 (typeset -U で重複排除)
+typeset -U path PATH
+path=(
+    # 優先度高: ユーザーツール
+    $HOME/.local/bin(N-/)
+    $HOME/bin(N-/)
+    $HOME/.yarn/bin(N-/)
 
-export PAGER=less
+    # Version managers
+    $VOLTA_HOME/bin(N-/)
+    $PYENV_ROOT/bin(N-/)
+    $PYENV_ROOT/shims(N-/)
+    $HOME/.rbenv/shims(N-/)
+    $(aqua root-dir)/bin(N-/)
+
+    # Kubernetes
+    ${KREW_ROOT:-$HOME/.krew}/bin(N-/)
+
+    # Go
+    /usr/local/go/bin(N-/)
+    $GOPATH/bin(N-/)
+
+    # Homebrew (ARM Mac)
+    /opt/homebrew/bin(N-/)
+    /opt/homebrew/opt/postgresql@15/bin(N-/)
+    /opt/homebrew/opt/libpq/bin(N-/)
+    /opt/homebrew/opt/curl/bin(N-/)
+    /opt/homebrew/opt/openssl@3/bin(N-/)
+    /opt/homebrew/opt/icu4c/bin(N-/)
+    /opt/homebrew/opt/pnpm/bin(N-/)
+
+    # Homebrew (Intel Mac - legacy)
+    /usr/local/bin(N-/)
+    /usr/local/sbin(N-/)
+    /usr/local/opt/libxml2/bin(N-/)
+    /usr/local/opt/libxslt/bin(N-/)
+    /usr/local/opt/libiconv/bin(N-/)
+    /usr/local/opt/curl/bin(N-/)
+    /usr/local/opt/openssl/bin(N-/)
+    /usr/local/opt/krb5/bin(N-/)
+    /usr/local/opt/krb5/sbin(N-/)
+    /usr/local/aws/bin(N-/)
+
+    # Applications
+    /Applications/Alacritty.app/Contents/MacOS(N-/)
+
+    # System
+    $path
+)
+
+########################################
+# rbenv: 遅延初期化 (初回呼び出し時にフル初期化)
+if (( $+commands[rbenv] )); then
+  rbenv() {
+    unfunction rbenv
+    eval "$(command rbenv init -)"
+    rbenv "$@"
+  }
+fi
 
 # eval "$(zellij setup --generate-auto-start zsh)"
 
@@ -94,23 +121,28 @@ function peco-src() {
 
 zle -N peco-src
 
-fpath+=~/.zfunc
-autoload -Uz compinit && compinit
+# Completion設定
+# キャッシュファイルは ~/.zfunc/ に格納 (generate-completions.sh で生成)
+fpath=(~/.zfunc $fpath)
 
-source <(stern --completion=zsh)
-source <(gh completion -s zsh)
-[[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
-source <(skaffold completion zsh)
-
+# compinit を1日1回だけ再生成
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 autoload -U +X bashcompinit && bashcompinit
 
-# Copyright (c) npm, Inc. and Contributors
-# All rights reserved.
-#
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# pyenv: 遅延初期化 (初回呼び出し時にフル初期化)
+# PATH は上部で設定済み
+if (( $+commands[pyenv] )); then
+  pyenv() {
+    unfunction pyenv
+    eval "$(command pyenv init -)"
+    pyenv "$@"
+  }
+fi
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
@@ -137,34 +169,11 @@ fi
 
 eval "$(starship init zsh)"
 
-# 1password cli completion
-eval "$(op completion zsh)"; compdef _op op
-
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/komori/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 alias beep='for i in {1..3}; do afplay /System/Library/Sounds/Morse.aiff; done'
-
-terraform -install-autocomplete
-if type terraform &> /dev/null; then
-  complete -C terraform terraform
-fi
-
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
-
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/komori/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/komori/google-cloud-sdk/path.zsh.inc'; fi
