@@ -6,3 +6,8 @@
 .envrc
 *.code-workspace
 *.local.tfvars
+
+.my_prompts
+
+.serena
+
